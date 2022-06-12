@@ -1,0 +1,34 @@
+Streaming:
+
+Pros
+* Much lower latency than batch processing
+* Greater performance/efficiency (especially with incremental data)
+
+Difficulties
+* Maintaining state and order for incoming data <- event time processing (later in the course)
+* Exactly-once processing in the context of machine failures <- fault tolerance
+* Responding to events at low latency
+* Transactional data at runtime
+* Updating business logic at runtime
+
+Design principles Spark Streaming
+Declarative API
+* write "what" needs to be computed, let the library decide how
+* alternative: Raat (record-at-a-time)
+    - set of APIs to process each incoming element as it arrives
+    - very low level: maintaining state & resource usage is your responsibility
+    - hard to develop
+
+Event time vs Processing time
+* event time = when the event was produced
+* processing time = when the event arrives
+* event time is critical: allows detection of late data points
+
+Continuous vs micro-batch execution
+* Continuous = include each data point as it arrives (lower latency)
+* Micro-batch = wait for a few data points, process them all in the new result (higher throughput)
+
+Low-level (DStreams) vs High-level API (Structured Streaming)
+
+Spark streaming operates on micro-batches - the spark engine will gather multiple data records and group them together,
+but Spark also supports continuous execution as an experimental feature.

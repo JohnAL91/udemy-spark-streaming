@@ -36,7 +36,7 @@ object StreamingDataframes {
     Triggers = when new data is written
     * default: write as soon as the current micro-batch has been processed
     * once: write a single micro-batch and stop
-    processing-time: look for new data at fiexd intervals
+    * processing-time: look for new data at fixed intervals
     * continuous (currently experimental)
   */
 
